@@ -12,25 +12,95 @@
 </head>
 <body>
     
-    <p><a href='/'>home</a></p>
+<p><a href='/'>home</a></p>
+
+<section>
+    <h1>drag and drop info</h1>
+
+    <p>My <a href='drag.html'>drag and drop widget</a> / example / coming client-side JavaScript library.
+
+    </p>
+
+    <p>Directions / user info: Drag and drop the arrows to change the order of the letters.  The order is being saved, but note there is some chance 
+        that someone else is changing 
+    the order at the same time.  That is, I did not protect this with a cookie or session.  Thus, if you refresh, you won't necessarily get the 
+    order you saved. 
+    </p>
+
+    <p><a href='https://github.com/kwynncom/drag-and-drop'>source code</a>
+
+    </p>
+
+    <section>
+    <h2>purpose</h2>
+    
+    <p>I'm trying to create a drag and drop client-side JavaScript library with the following features:</p>
+    
+    <ul>
+        
+        <li>Arrow icons represent the draggable HTML elements.</li>
+        
+        <li>Dragged elements may drag other, associated elements, and then drop them in a different order than when the drag started.
+            
+        </li>
+        
+        <li>While one is dragging an element, the code indicates where that element will be positioned if it were dropped at that point.</li>
+        
+        <li>Order is indicated (behind the scenes) by a floating point number that is between the numbers of the adjacent elements.  The top 
+            is 0 and thus the order number must remain greater than 0.  The bottom element always has the highest number.
+            
+        </li>
+        
+        <li>This order representation means that upon drop, only the new order number has to be saved to the server.  The entire order does not have to 
+            be saved.
+            
+        </li>
+        
+        <li>Upon drop, drag is disabled and a transition is indicated until the server returns "OK."  
+            
+        </li>
+        
+    </ul>
+    
+    <p>It appears that I can abstract the library so that it will work in many instances.  I won't know how well the abstraction works until I 
+        try it in a second instance.  I plan to do this late on June 25, 2022, or soon after.
+        
+    </p>
+    
+    
+    </section>
     
     <section>
-        <h1>drag and drop info</h1>
+    
+    <h2>background</h2>
+
+    <p>Early on June 23, 2022, I was working on my main client's application.  To go back a few years, in 2017, he asked for a drag and drop feature 
+        on one of the pages.  
+        (Specifying the page possibly is a secret.)
+        Once 
+        that was working, he wanted the drag motion to indicate where the row would go if it were dropped in that position.  That's where I get this 
+        version's dashed, 4px wide border.  A year ago, I added another drag feature.  That one isn't a secret.  There are account numbers 
+        associated with one or more court docket numbers.  He wanted to be able to drag the account number to specify which one would be billed--the one 
+        on top.  
+    </p>
         
-        <p>My <a href='drag.html'>drag and drop widget</a> / example / coming client-side JavaScript library.
-            
-        </p>
+    <p>For the last 7 months or so I've been reworking the whole application to free it from Drupal.  When I was reworking the original drag and drop 
+        page, I decided to rework a number of points beyond escaping Drupal.  On the "secret" page, a drop can cause a few dozen fields to recalculate.  
+        Previously, I was saving all those fields, and I had to make sure that the saves didn't get out of order in terms of which got to the server 
+        first.  I realized a few weeks ago that I only need to save the order and one other field.  I don't need to save those fields on the back end 
+        because based on one field and order, the rest of the fields are derivable.  I don't have to worry about network order because I disable 
+        drag until the server returns "OK."  
         
-        <p>Directions / user info: Drag and drop the arrows to change the order of the letters.  The order is being saved, but note there is some chance that someone else is changing 
-        the order at the same time.  That is, I did not protect this with a cookie or session.  Thus, if you refresh, you won't necessarily get the 
-        order you saved. 
-            
-        </p>
+    </p>
+    
+    <p>The other night I was reworking the account number drag feature, and I decided to change it to work the same way with an order number.  I 
+        decided to stop the billing clock and create a public library, then use that library for the new account number feature.  I won't know 
+        how abstract the library is until I try to use it in my client's application.
         
-        <p><a href='https://github.com/kwynncom/drag-and-drop'>source code</a>
-            
-        </p>
+    </p>
     </section>
+    
+</section>
     
 </body>
 </html>
