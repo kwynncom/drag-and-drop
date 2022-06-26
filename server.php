@@ -5,7 +5,8 @@ require_once('/opt/kwynn/kwutils.php');
 class dragDemo extends dao_generic_3 {
 	
 	const elen = 5;
-	const ordxInterval = 1000;
+	const ordxInterval = 100000;
+	const baseOrdx     = 100000000000;
 	
 	public function __construct() {
 		$this->init();
@@ -37,8 +38,8 @@ class dragDemo extends dao_generic_3 {
 		for ($i=0; $i < self::elen; $i++) {
 			$d = [];
 			$v = chr(ord('A') + $i);
-			$d['_id'] = 'e_' . $v;
-			$d['ordx'] = self::ordxInterval * ($i + 1);
+			$d['_id'] = $v;
+			$d['ordx'] = self::baseOrdx + (self::ordxInterval * ($i + 1));
 			$d['v'] = $v;
 			
 			$dat[] = $d;
@@ -53,7 +54,7 @@ class dragDemo extends dao_generic_3 {
 	private function set() {
 		if (isrv('action') !== 'setOrder') return;
 		$id = isrv('_id');
-		kwas(preg_match('/^e_[A-Z]$/', $id), 'bad id');
+		kwas(preg_match('/^[A-Z]$/', $id), 'bad id');
 		$or = isrv('ordx');
 		kwas(is_numeric($or), 'bad orderx');
 		$ox = floatval($or); unset($or);

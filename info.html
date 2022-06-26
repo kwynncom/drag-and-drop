@@ -27,6 +27,26 @@
     order you saved. 
     </p>
 
+    <p>Also, saving the order will eventually break because the ordering floating point numbers will eventually underflow the smallest possible 
+        size.  For my main use case, I am fine with this because the chance of an underflow I put at around 0.01% over the next few years of use.
+        In this use case, I can live with those odds.  The project's budget is not high enough to worry about such things.  
+     </p>
+     
+     <p>To solve the problem, the server could check for a certain size, lock a resource lock / semaphore / mutex, and then multiply all the 
+         relevant 
+         rows (documents) by a billion or more, then release the lock.
+     </p>
+     
+     <p>I think the PHP language is the weakest link for an underflow.  Client-size JavaScript says it can handle 5e-324, which is a 
+         mind-bogglingly small number.  I'm not sure what MongoDB can handle.  PHP can handle about 14 significant digits.  
+         
+     </p>
+     
+     <p>After I wrote the above, I increased the default base number in the example by several orders of magnitude.  It will still break 
+         eventually. I'll leave that experimentation, research, and math to the reader.
+         
+     </p>
+    
     <p><a href='https://github.com/kwynncom/drag-and-drop'>source code</a>
 
     </p>
