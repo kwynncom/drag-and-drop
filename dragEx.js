@@ -4,7 +4,7 @@ class testDrag extends dragKwBaseClass {
         this.charBase = 65;
         this.rowsn = 5;
         this.ordServerURL = '/t/22/06/drag/server.php';
-        this.setServerURL(this.ordServerURL);
+        // this.setServerURL();
         this.theParentE = byid('thetbody');
     }
     
@@ -21,7 +21,7 @@ class testDrag extends dragKwBaseClass {
     
     init20(ret) {
         
-        // this.setDragMeta(ret['meta']);
+        this.dragSetMeta(this.ordServerURL, ret['meta']);
         
         for (let i = 0; i < this.rowsn; i++) {
             
@@ -31,7 +31,7 @@ class testDrag extends dragKwBaseClass {
             const uqid = idc;
             
             const tr = cree('tr', r['_id']);
-            this.setDragParent(tr, uqid, r['ordx'], ret['meta']['interval']);
+            this.setDragParent(tr, uqid, r['ordx']);
             const td10 = cree('td');
             td10.innerHTML = '&varr;';
             this.setEleDraggable(td10);

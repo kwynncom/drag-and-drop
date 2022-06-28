@@ -31,12 +31,14 @@ class dragDemo extends dao_generic_3 {
 	}
 	
 	private function getMeta() {
+		// $a['dragURL'] = '/t/22/06/drag/server.php';
 		$a['interval'] = self::ordxInterval;
 		$a['dbuqid'  ] = '_id';
 		$a['dbordxfn'  ] = 'ordx';
-		$a['upActionName'  ] = 'setOrder';
-		$a['saveStatusName'] = 'postOrdxSave';
-		$a['saveStatusOKName'] = 'OK';
+		$a['actionName'  ] = 'action';
+		$a['actionValue'] = 'setOrder';
+		$a['returnStatusName'] = 'postOrdxSave';
+		$a['returnStatusOKValue'] = 'OK';
 		return $a;
 	}
 	
