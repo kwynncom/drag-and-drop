@@ -25,9 +25,19 @@ class dragDemo extends dao_generic_3 {
 		$this->initDat();
 		$dat = $this->ocoll->find([], ['sort' => ['ordx' => 1]]);
 		$r['dat'] = $dat;
-		$r['interval'] = self::ordxInterval;
+		$r['meta'] = $this->getMeta();
 		kwjae($r);
 		
+	}
+	
+	private function getMeta() {
+		$a['interval'] = self::ordxInterval;
+		$a['dbuqid'  ] = '_id';
+		$a['dbordxfn'  ] = 'ordx';
+		$a['upActionName'  ] = 'setOrder';
+		$a['saveStatusName'] = 'postOrdxSave';
+		$a['saveStatusOKName'] = 'OK';
+		return $a;
 	}
 	
 	private function initDat() {

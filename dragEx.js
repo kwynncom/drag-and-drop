@@ -21,6 +21,8 @@ class testDrag extends dragKwBaseClass {
     
     init20(ret) {
         
+        // this.setDragMeta(ret['meta']);
+        
         for (let i = 0; i < this.rowsn; i++) {
             
             const r = ret['dat'][i];
@@ -29,7 +31,7 @@ class testDrag extends dragKwBaseClass {
             const uqid = idc;
             
             const tr = cree('tr', r['_id']);
-            this.setDragParent(tr, uqid, r['ordx'], ret['interval']);
+            this.setDragParent(tr, uqid, r['ordx'], ret['meta']['interval']);
             const td10 = cree('td');
             td10.innerHTML = '&varr;';
             this.setEleDraggable(td10);
