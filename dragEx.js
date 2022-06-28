@@ -22,6 +22,8 @@ class testDrag extends dragKwBaseClass {
     init20(ret) {
         
         this.dragSetMeta(this.ordServerURL, ret['meta']);
+        // {'moreDatKeyEx' : 'moreDatValIgnoreMe'}
+        this.dragSetMoreDat({'moreDatKeyEx' : 'moreDatValIgnoreMe'});
         
         for (let i = 0; i < this.rowsn; i++) {
             
