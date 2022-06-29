@@ -34,12 +34,13 @@ class dragDemo extends dao_generic_3 {
 		// $a['dragURL'] = '/t/22/06/drag/server.php';
 		$a['interval'] = self::ordxInterval;
 		$a['dbuqid'  ] = '_id';
+		$a['dbuqidType'] = 'string';
 		$a['dbordxfn'  ] = 'ordx';
 		$a['actionName'  ] = 'action';
 		$a['actionValue'] = 'setOrder';
 		$a['returnStatusName'] = 'postOrdxSave';
 		$a['returnStatusOKValue'] = 'OK';
-		return $a;
+				return $a;
 	}
 	
 	private function initDat() {
